@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import { app } from './src/app';
 import {
   connectConsumer,
@@ -8,9 +9,10 @@ import {
 } from './src/feature';
 
 const start = async () => {
-  let wrongConnectionProducer = true;
+
 
   // Ciclo para intentar conectar con el productor y el consumidor de Kafka
+  let wrongConnectionProducer = true;
   while (wrongConnectionProducer) {
     try {
       await connectProducer();
@@ -36,6 +38,7 @@ const start = async () => {
       await sleep(3000);
     }
   }
+
 
   // Manejo de la señal SIGINT (por ejemplo, Ctrl+C) para desconectar correctamente el productor y el consumidor de Kafka antes de salir
   process.on('SIGINT', async () => {

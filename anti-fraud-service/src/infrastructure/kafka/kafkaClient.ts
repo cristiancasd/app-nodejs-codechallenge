@@ -4,8 +4,7 @@ const hostBroker= process.env.KAFKA_BROKER_URL || 'localhost:9092';
 console.log('host broker to use ', hostBroker);
 const brokers = [hostBroker];
 
-
 export const kafka = new Kafka({
-  clientId: 'transaction-service',
+  clientId: 'anti-fraud-service',
   brokers
 });

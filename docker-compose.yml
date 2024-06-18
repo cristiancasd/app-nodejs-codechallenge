@@ -30,4 +30,17 @@ services:
       dockerfile: Dockerfile
     ports:
       - '8070:8070'
+    environment:
+      KAFKA_BROKER_URL: "kafka:29092"
+      DB_URL: "postgres"
+    restart: always
+  anti-fraud-service:
+    container_name: anti-fraud-service
+    build:
+      context: ./anti-fraud-service
+      dockerfile: Dockerfile
+    ports:
+      - '8071:8071'
+    environment:
+      KAFKA_BROKER_URL: "kafka:29092"
     restart: always
