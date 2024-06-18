@@ -10,7 +10,7 @@ import { kafka } from './kafka.client';
 const { transactionRepository } = configureDependencies();
 
 // Configura el consumidor Kafka para este servicio de transacciones
-const consumer = kafka.consumer({
+export const consumer = kafka.consumer({
   groupId: 'transaction-service'
 });
 

@@ -1,6 +1,9 @@
 export const configureDependenciesMock = jest.fn().mockReturnValue({
-  transactionRepository: {
-    editTransaction: jest.fn()
+  transactionRepository : {
+    createTransaction: jest.fn(),
+    editTransaction: jest.fn(),
+    findTransaction: jest.fn(),
+    getUserTransactions: jest.fn(),
   }
 });
 

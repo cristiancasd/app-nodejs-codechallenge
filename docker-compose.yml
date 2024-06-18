@@ -31,3 +31,11 @@ services:
     ports:
       - '8070:8070'
     restart: always
+  anti-fraud-service:
+    container_name: anti-fraud-service
+    build:
+      context: ./anti-fraud-service
+      dockerfile: Dockerfile
+    ports:
+      - '8071:8071'
+    restart: always
