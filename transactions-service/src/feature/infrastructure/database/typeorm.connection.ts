@@ -9,7 +9,7 @@ import {
 
 const connectDB = new DataSource({
   type: 'postgres',
-  host: defautlDbConfig.host,
+  host:  process.env.DB_URL || defautlDbConfig.host,
   port: defautlDbConfig.port,
   username: defautlDbConfig.username,
   password: defautlDbConfig.password,
@@ -20,14 +20,13 @@ const connectDB = new DataSource({
 });
 
 const initializeDb = async () => {
-  connectDB
-    .initialize()
-    .then(() => {
-      console.log(initializedDbMessage);
-    })
-    .catch((err) => {
-      console.error(initializedDbErrorMessage, err);
-    });
+  try {
+    await connectDB.initialize();
+    console.log(initializedDbMessage);
+  } catch (err) {
+    console.log('error conecting DB', err)
+    throw err; 
+  }
 };
 
 export { connectDB, initializeDb };

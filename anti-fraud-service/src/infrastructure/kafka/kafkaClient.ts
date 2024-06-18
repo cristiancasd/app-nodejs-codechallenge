@@ -1,6 +1,8 @@
 import { Kafka } from 'kafkajs';
 
-const brokers = ['localhost:9092'];
+const hostBroker= process.env.KAFKA_BROKER_URL || 'localhost:9092';
+console.log('host broker to use ', hostBroker);
+const brokers = [hostBroker];
 
 export const kafka = new Kafka({
   clientId: 'anti-fraud-service',

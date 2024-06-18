@@ -1,4 +1,4 @@
-//import { runConsumer } from './infrastructure/kafka/kafkaConsumer';
+import 'dotenv/config'
 import {
   disconnectConsumer,
   runConsumer
