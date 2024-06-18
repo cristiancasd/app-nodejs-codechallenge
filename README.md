@@ -1,14 +1,9 @@
-# Yape Code Challenge :rocket:
+ <p align="center">
+  <a href="https://www.yape.com.pe//" target="blank"><img src="https://www.yape.com.pe/assets/images/logo.png" width="200" alt="Yape Logo" /></a>
+</p>
 
-Our code challenge will let you marvel us with your Jedi coding skills :smile:. 
+## Yape problem solved:
 
-Don't forget that the proper way to submit your work is to fork the repo and create a PR :wink: ... have fun !!
-
-- [Problem](#problem)
-- [Tech Stack](#tech_stack)
-- [Send us your challenge](#send_us_your_challenge)
-
-# Problem
 
 Every time a financial transaction is created it must be validated by our anti-fraud microservice and then the same service sends a message back to update the transaction status.
 For now, we have only three transaction statuses:
@@ -30,53 +25,39 @@ Every transaction with a value greater than 1000 should be rejected.
     Transaction -- Update transaction Status event--> transactionDatabase[(Database)]
 ```
 
-# Tech Stack
 
-<ol>
-  <li>Node. You can use any framework you want (i.e. Nestjs with an ORM like TypeOrm or Prisma) </li>
-  <li>Any database</li>
-  <li>Kafka</li>    
-</ol>
+## Backend stack
+- Typescript
+- Express
+- kafka
+- Postgress
+- TypeOrm
+- Jest
 
-We do provide a `Dockerfile` to help you get started with a dev environment.
+## Architectures
+- Microservicios
+- transactions-service: Clean Architecture
+- antifraud-service: Event-Driven Architecture (EDA)
 
-You must have two resources:
 
-1. Resource to create a transaction that must containt:
+### API Usage
 
-```json
-{
-  "accountExternalIdDebit": "Guid",
-  "accountExternalIdCredit": "Guid",
-  "tranferTypeId": 1,
-  "value": 120
-}
-```
+1. Run ``docker-compose up --build -d`` to start the Docker containers in detached mode.
+2. Ensure that both services are successfully launched and operational.
 
-2. Resource to retrieve a transaction
+### Run the tests
 
-```json
-{
-  "transactionExternalId": "Guid",
-  "transactionType": {
-    "name": ""
-  },
-  "transactionStatus": {
-    "name": ""
-  },
-  "value": 120,
-  "createdAt": "Date"
-}
-```
 
-## Optional
 
-You can use any approach to store transaction data but you should consider that we may deal with high volume scenarios where we have a huge amount of writes and reads for the same data at the same time. How would you tackle this requirement?
 
-You can use Graphql;
+#### Note
+1. To access the services
+- Access the backend transactions service at [http://localhost:8070](http://localhost:8070).
+- Access the backend anti-fraud service at [http://localhost:8071](http://localhost:8071).
 
-# Send us your challenge
+2. To run the tests
+- Transactions: `cd transactions-service` `npm test`
+- Antifraud: `cd anti-fraud-service` `npm test`
 
-When you finish your challenge, after forking a repository, you **must** open a pull request to our repository. There are no limitations to the implementation, you can follow the programming paradigm, modularization, and style that you feel is the most appropriate solution.
 
-If you have any questions, please let us know.
+
