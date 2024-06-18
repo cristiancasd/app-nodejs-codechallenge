@@ -23,3 +23,11 @@ services:
       KAFKA_JMX_PORT: 9991
     ports:
       - 9092:9092
+  transactions-service:
+    container_name: transactions-service
+    build:
+      context: ./transactions-service
+      dockerfile: Dockerfile
+    ports:
+      - '8070:8070'
+    restart: always
